@@ -6,6 +6,7 @@ defmodule Oasis.MixProject do
       app: :oasis,
       version: "0.1.0",
       elixir: "~> 1.9",
+      escript: [main_module: Oasis.CLI, path: "./escript/oasis"],
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
