@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Oasis Report</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-200">
+    <div class="flex mb-4">
+      <div class="w-1/4 h-12"></div>
+      <div class="w-2/4 h-12">
+        <h1 class="text-2xl font-bold text-center text-gray-700 mt-8">
+          Oasis Report
+        </h1>
+        <table class="w-full text-left mt-8">
+          <thead>
+            <tr>
+              <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Offender</th>
+              <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Violation type</th>
+              <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= for antipattern <- antipatterns do %>
+              <tr>
+                <td class="p-2 border-t border-gray-300 text-sm font-mono text-gray-700 whitespace-no-wrap"><%= antipattern.violator %></td>
+                <td class="p-2 border-t border-gray-300 text-sm text-gray-700 whitespace-no-wrap"><%= antipattern.type %></td>
+                <td class="p-2 border-t border-gray-300 text-sm text-justify text-gray-700"><%= File.read!("templates/violations/#{antipattern.type}.html") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="w-1/4 h-12"></div>
+    </div>
+  </body>
+</html>
