@@ -25,9 +25,9 @@
           <tbody>
             <%= for antipattern <- antipatterns do %>
               <tr>
-                <td class="p-2 border-t border-gray-300 text-sm font-mono text-gray-700 whitespace-no-wrap"><%= antipattern.violator %></td>
+                <td class="p-2 border-t border-gray-300 text-sm font-mono text-gray-700 whitespace-no-wrap"><%= antipattern.offender %></td>
                 <td class="p-2 border-t border-gray-300 text-sm text-gray-700 whitespace-no-wrap"><%= antipattern.type %></td>
-                <td class="p-2 border-t border-gray-300 text-sm text-justify text-gray-700"><%= File.read!("templates/violations/#{antipattern.type}.html") %></td>
+                <td class="p-2 border-t border-gray-300 text-sm text-justify text-gray-700"><%= File.read!("templates/offenses/#{antipattern.type}.html") %></td>
               </tr>
             <% end %>
           </tbody>

@@ -1,8 +1,8 @@
 alias Oasis.Antipattern, as: Antipattern
 
 defmodule Oasis.Antipattern do
-  @enforce_keys [:violator, :type]
-  defstruct [:violator, :type]
+  @enforce_keys [:offender, :type]
+  defstruct [:offender, :type]
 
   def detect_all(yaml) do
     [deep_paths(yaml), sequential_id(yaml)]
@@ -14,7 +14,7 @@ defmodule Oasis.Antipattern do
     |> Map.keys()
     |> Enum.map(fn path ->
       if String.match?(path, ~r/\{.+\}.+\{.+\}/) do
-        %Antipattern{violator: "paths.#{path}", type: :deep_path}
+        %Antipattern{offender: "paths.#{path}", type: :deep_path}
       end
     end)
     |> Enum.filter(& &1)
@@ -44,7 +44,7 @@ defmodule Oasis.Antipattern do
         |> Enum.map(fn param_metadata ->
           if (param_metadata["schema"] || %{})["type"] == "integer" do
             %Antipattern{
-              violator: "paths.#{path}?#{param_metadata["name"]}",
+              offender: "paths.#{path}?#{param_metadata["name"]}",
               type: :sequential_id
             }
           end
