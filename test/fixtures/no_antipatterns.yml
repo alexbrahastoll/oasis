@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Ecommerce
+  license:
+    name: MIT
+servers:
+  - url: http://example.com/v1/api
+paths:
+  /orders:
+    get:
+      summary: List all orders of the authenticated user.
+      operationId: list_orders
+      tags:
+        - orders
+      responses:
+        200:
+          description: An array of orders
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Orders"
+components:
+  schemas:
+    Order:
+      description: An order.
+      required:
+        - id
+        - name
+      properties:
+        id:
+          description: The unique identifier of an order.
+          type: integer
+          format: int64
+        name:
+          description: The name of an order.
+          type: string
+        tag:
+          description: The tag of an order.
+          type: string
+    Orders:
+      description: A collection of orders.
+      type: array
+      items:
+        $ref: "#/components/schemas/Order"

@@ -1,19 +1,13 @@
 alias Oasis.Antipattern, as: Antipattern
+alias Oasis.Antipattern.Util, as: Util
 
 defmodule Oasis.Antipattern.SequentialID do
   def detect(yaml) do
     yaml
-    |> filter_get_paths
+    |> Util.filter_get_paths()
     |> detect_sequential_id_params
     |> List.flatten()
     |> Enum.filter(& &1)
-  end
-
-  defp filter_get_paths(yaml) do
-    yaml["paths"]
-    |> Enum.filter(fn {_path, metadata} ->
-      metadata["get"] != nil
-    end)
   end
 
   defp detect_sequential_id_params(get_paths) do
@@ -37,9 +31,8 @@ defmodule Oasis.Antipattern.SequentialID do
   end
 
   defp path_id_params(path) do
-    Regex.scan(~r/\{((?:[a-z]|[0-9]|[_-])+)\}/i, path)
-    |> List.flatten()
-    |> Enum.reject(fn match -> String.starts_with?(match, "{") end)
+    path
+    |> Util.extract_params_from_path()
     |> Enum.filter(fn param ->
       String.match?(param, ~r/(?:.+[_-]*[iI](?:d|D|dentifier))$/)
     end)
