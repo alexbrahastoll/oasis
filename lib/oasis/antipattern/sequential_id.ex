@@ -1,5 +1,5 @@
-alias Oasis.Antipattern, as: Antipattern
-alias Oasis.Antipattern.Util, as: Util
+alias Oasis.Antipattern
+alias Oasis.Antipattern.Util
 
 defmodule Oasis.Antipattern.SequentialID do
   def detect(yaml) do

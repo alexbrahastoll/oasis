@@ -1,5 +1,5 @@
-alias Oasis.Antipattern, as: Antipattern
-alias Oasis.Antipattern.DeepPath, as: DeepPath
+alias Oasis.Antipattern
+alias Oasis.Antipattern.DeepPath
 
 defmodule DeepPathTest do
   use ExUnit.Case, async: true

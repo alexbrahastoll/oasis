@@ -1,5 +1,5 @@
-alias Oasis.Antipattern, as: Antipattern
-alias Oasis.Antipattern.SequentialID, as: SequentialID
+alias Oasis.Antipattern
+alias Oasis.Antipattern.SequentialID
 
 defmodule SequentialIDTest do
   use ExUnit.Case, async: true

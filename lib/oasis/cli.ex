@@ -1,4 +1,4 @@
-alias Oasis.Parser, as: Parser
+alias Oasis.Parser
 
 defmodule Oasis.CLI do
   def main(cli_args) do
@@ -8,8 +8,11 @@ defmodule Oasis.CLI do
 
       [oas_path] ->
         case Parser.parse(oas_path) do
-          {:ok, report} ->
-            IO.puts(report)
+          {:ok, report_path} ->
+            IO.puts("OpenAPI antipatterns detected. Report generated at #{report_path}")
+
+          {:no_antipatterns, _} ->
+            IO.puts("Hooray! No antipatterns were detected.")
 
           {:error, _} ->
             IO.puts("It was not possible to parse #{oas_path}.")

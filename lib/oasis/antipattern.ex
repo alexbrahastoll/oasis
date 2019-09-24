@@ -1,6 +1,6 @@
-alias Oasis.Antipattern.DeepPath, as: DeepPath
-alias Oasis.Antipattern.SequentialID, as: SequentialID
-alias Oasis.Antipattern.SensitiveInfoQS, as: SensitiveInfoQS
+alias Oasis.Antipattern.DeepPath
+alias Oasis.Antipattern.SequentialID
+alias Oasis.Antipattern.SensitiveInfoQS
 
 defmodule Oasis.Antipattern do
   @enforce_keys [:offender, :type]

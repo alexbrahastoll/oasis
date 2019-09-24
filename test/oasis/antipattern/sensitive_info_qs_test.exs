@@ -1,5 +1,5 @@
-alias Oasis.Antipattern, as: Antipattern
-alias Oasis.Antipattern.SensitiveInfoQS, as: SensitiveInfoQS
+alias Oasis.Antipattern
+alias Oasis.Antipattern.SensitiveInfoQS
 
 defmodule SensitiveInfoQSTest do
   use ExUnit.Case, async: true

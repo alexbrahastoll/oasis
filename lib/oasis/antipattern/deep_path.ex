@@ -1,4 +1,4 @@
-alias Oasis.Antipattern, as: Antipattern
+alias Oasis.Antipattern
 
 defmodule Oasis.Antipattern.DeepPath do
   def detect(yaml) do
